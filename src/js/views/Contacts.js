@@ -9,7 +9,7 @@ const Contacts = () => {
         <div>
             <div className="contactContainer">
                 {store.Contacts.map((contact) => (
-                    <ContactCard key={contact.id} contact={contact} />
+                    <ContactCard key={contact.id} contact={contact} actions={actions} />
                 ))}
 
             </div>

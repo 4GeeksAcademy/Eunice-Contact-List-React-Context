@@ -1,8 +1,17 @@
-import React from "react"
+import React, { useState } from "react"
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-const ContactCard = ({ contact }) => {
+const ContactCard = ({ contact, actions }) => {
+  const [showModal, setShowModal] = useState();
+
+  const handleOpenModal = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
 
   return (
     <div className="contactContainer">
@@ -28,8 +37,37 @@ const ContactCard = ({ contact }) => {
         </div>
         <div className="col-6 editButtons text-end">
           <Link to={`/edit/${contact.id}`}><button><i className="fa-solid fa-pencil"></i></button></Link>
-          <button><i className="fa-solid fa-trash-can"></i></button>
+          <button onClick={handleOpenModal}>
+            <i className="fa-solid fa-trash-can"></i>
+          </button>
         </div>
+
+
+        <div className={`modal ${showModal ? "show" : ""}`} tabIndex="-1" role="dialog" style={{ display: `${showModal ? "block" : "none"}` }}>
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Confirm Deletion</h5>
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={handleCloseModal}>
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div className="modal-body">
+                <p>Are you sure you want to delete this contact?</p>
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={handleCloseModal}>
+                  Cancel
+                </button>
+                <button type="button" className="btn btn-danger" onClick={() => { actions.deleteContact(contact.id); handleCloseModal(); }}>
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
       </div>
     </div >
   )
