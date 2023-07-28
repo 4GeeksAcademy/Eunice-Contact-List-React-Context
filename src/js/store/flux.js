@@ -1,45 +1,61 @@
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
+			Contacts: [
 				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
+					id: "1",
+					name: "Eunice Hidalgo",
+					email: "eunice_05@hotmail.com",
+					phone: "(+506)88528900",
+					address: "San Pedro"
 				},
 				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
+					id: "2",
+					name: "Stefany Méndez",
+					email: "tefis15@gmail.com",
+					phone: "(+506)85984225",
+					address: "Zarcero"
 				}
-			]
+			],
+			newContact: {
+				name: "",
+				email: "",
+				phone: "",
+				address: ""
+			}
 		},
+
 		actions: {
 			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
+			getContacts: () => {
+				return getStore().Contacts;
 			},
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
-			},
-			changeColor: (index, color) => {
-				//get the store
+
+			createContact: (newContact) => {
 				const store = getStore();
+				const updatedContacts = [...store.Contacts, newContact];
+				setStore({ Contacts: updatedContacts });
+			},
 
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
+			updateContact: (updatedContact) => {
+				const store = getStore();
+				const updatedContacts = store.Contacts.map((contact) =>
+					contact.id === updatedContact.id ? updatedContact : contact
+				);
+				setStore({ Contacts: updatedContacts });
+			},
 
-				//reset the global store
-				setStore({ demo: demo });
-			}
+			deleteContact: (contactId) => {
+				const store = getStore();
+				const updatedContacts = store.Contacts.filter((contact) =>
+					contact.id !== contactId
+				);
+				setStore({ Contacts: updatedContacts });
+			},
 		}
 	};
 };
 
-export default getState;
+
+export default (getState);
