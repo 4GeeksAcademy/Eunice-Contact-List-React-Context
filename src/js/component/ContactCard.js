@@ -27,7 +27,7 @@ const ContactCard = ({ contact }) => {
           </div>
         </div>
         <div className="col-6 editButtons text-end">
-          <Link to={`/edit/${parseInt(contact.id)}`}><button><i className="fa-solid fa-pencil"></i></button></Link>
+          <Link to={`/edit/${contact.id}`}><button><i className="fa-solid fa-pencil"></i></button></Link>
           <button><i className="fa-solid fa-trash-can"></i></button>
         </div>
       </div>
@@ -39,4 +39,4 @@ ContactCard.propTypes = {
   contact: PropTypes.object.isRequired
 }
 
-export default ContactCard
+export default ContactCard;
