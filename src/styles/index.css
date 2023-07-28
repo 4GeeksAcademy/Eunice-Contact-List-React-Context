@@ -41,6 +41,10 @@
     background-color: white;
 }
 
+.editButtons button:hover {
+    color: rgb(122, 77, 236);
+}
+
 .close {
     background-color: white;
     border: none;
