@@ -7,6 +7,10 @@ const AddContact = () => {
     const { store, actions } = useContext(Context);
     const { id } = useParams();
     const [contact, setContact] = useState(store.newContact);
+    const [errorMessage, setErrorMessage] = useState("");
+    const [isAlertVisible, setIsAlertVisible] = useState(false);
+    const [isSuccessAlertVisible, setIsSuccessAlertVisible] = useState(false);
+    const [successMessage, setSuccessMessage] = useState("");
 
 
     useEffect(() => {
@@ -25,6 +29,18 @@ const AddContact = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        const trimmedName = contact.name.trim();
+        const trimmedEmail = contact.email.trim();
+        const trimmedPhone = contact.phone.trim();
+        const trimmedAddress = contact.address.trim();
+
+        if (!trimmedName || !trimmedEmail || !trimmedPhone || !trimmedAddress) {
+            setErrorMessage("Please fill in all fields.");
+            setIsAlertVisible(true);
+            return;
+        }
+
         if (id) {
             actions.updateContact(contact);
         } else {
@@ -39,6 +55,15 @@ const AddContact = () => {
             phone: '',
             address: '',
         });
+
+        setSuccessMessage("Form submitted successfully!");
+        setIsSuccessAlertVisible(true);
+
+        setTimeout(() => {
+            setIsSuccessAlertVisible(false);
+        }, 5000);
+
+        setIsAlertVisible(false);
     };
 
     return (
@@ -102,9 +127,11 @@ const AddContact = () => {
                         onChange={handleChange}
                     />
                 </div>
-                <button type="submit" className="saveButton btn btn-primary">
+                <button type="submit" className="saveButton btn btn-primary mb-2">
                     Save
                 </button>
+                {isAlertVisible && <div className="alert alert-danger mt-3 p-1">{errorMessage}</div>}
+                {isSuccessAlertVisible && <div className="alert alert-success mt-3 p-1">{successMessage}</div>}
                 <Link to="/Contacts">or get back to contacts</Link>
             </form>
         </div>
