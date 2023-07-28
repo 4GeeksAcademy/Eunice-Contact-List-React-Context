@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from "uuid";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
@@ -19,6 +20,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			],
 			newContact: {
+				id: uuidv4(),
 				name: "",
 				email: "",
 				phone: "",
@@ -27,7 +29,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 
 		actions: {
-			// Use getActions to call a function within a fuction
+			
 			getContacts: () => {
 				return getStore().Contacts;
 			},

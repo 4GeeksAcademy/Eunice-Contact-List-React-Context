@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import ContactCard from '../component/ContactCard'
 import { Context } from '../store/appContext'
-import { Link } from 'react-router-dom';
 
 const Contacts = () => {
     const { store, actions } = useContext(Context)
