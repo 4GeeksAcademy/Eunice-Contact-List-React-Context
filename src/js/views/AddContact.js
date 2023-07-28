@@ -69,7 +69,7 @@ const AddContact = () => {
     return (
         <div className="formContainer">
             <form onSubmit={handleSubmit}>
-                <h1 className="title text-center">Add a new contact</h1>
+                <h1 className="title text-center fs-2">Add a new contact</h1>
                 <div className="mb-3">
                     <label htmlFor="exampleInputFullName1" className="form-label">
                         Full Name
