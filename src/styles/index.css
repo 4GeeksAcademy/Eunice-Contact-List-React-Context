@@ -1,6 +1,13 @@
 .formContainer {
     margin: 2rem 9rem;
     width: auto;
+    background-color: rgb(255, 254, 192);
+    padding: 2rem;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.title {
+    text-decoration: underline;
 }
 
 .saveButton {
@@ -15,16 +22,17 @@
 
 .contactContainer {
     width: auto;
-
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .bigContainer {
-    margin: 1rem 9rem;
+    margin: 0 9rem 0;
     border: solid 1px rgb(223, 221, 221);
     padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: rgb(255, 254, 192);
 }
 
 .contactInfo {
@@ -38,11 +46,11 @@
     font-size: 1.2rem;
     border: none;
     outline: none;
-    background-color: white;
+    background-color: transparent;
 }
 
 .editButtons button:hover {
-    color: rgb(122, 77, 236);
+    color: rgb(236, 122, 77);
 }
 
 .close {
@@ -54,4 +62,8 @@
 
 .close:hover {
     color: red;
+}
+
+.footer {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
