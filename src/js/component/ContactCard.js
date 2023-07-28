@@ -35,7 +35,7 @@ const ContactCard = ({ contact, actions }) => {
             <span className="email m-3 text-secondary">{contact.email}</span>
           </div>
         </div>
-        <div className="col-6 editButtons text-end">
+        <div className="col-5 editButtons text-end">
           <Link to={`/edit/${contact.id}`}><button><i className="fa-solid fa-pencil"></i></button></Link>
           <button onClick={handleOpenModal}>
             <i className="fa-solid fa-trash-can"></i>
